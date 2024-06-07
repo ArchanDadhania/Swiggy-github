@@ -21,7 +21,7 @@ public class Player {
     }
 
     public void takeDamage(int damage){
-        this.health -= damage;
+        this.health = Math.max(this.health - damage, 0);
     }
 
     public boolean isAlive(){
