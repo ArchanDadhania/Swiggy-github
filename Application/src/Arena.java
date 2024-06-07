@@ -1,3 +1,8 @@
+
+
+
+
+
 public class Arena {
     private Player player1;
     private Player player2;
@@ -24,5 +29,24 @@ public class Arena {
         }else {
             System.out.println("Player 2 is win....!!!!");
         }
+    }
+
+    public void turn(Player attacker, Player defender){
+        int attackRoll = attacker.rollAttackDice();
+        int defenseRoll = defender.rollDefenceDice();
+
+        int attackDamage = attacker.getAttack() * attackRoll;
+        int defenseStrength = attacker.getStrength() * defenseRoll;
+
+        int damageDealt = attackDamage - defenseStrength;
+
+        if (damageDealt > 0) {
+            defender.takeDamage(damageDealt);
+        }
+
+        System.out.println("Attacker's attack roll: " + attackRoll + ", Attack damage: " + attackDamage);
+        System.out.println("Defender's defense roll: " + defenseRoll + ", Defense strength: " + defenseStrength);
+        System.out.println("Defender's health: " + defender.getHealth());
+
     }
 }
